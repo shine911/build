@@ -63,7 +63,6 @@
 #include "util.h"
 #include "ueventd.h"
 #include "watchdogd.h"
-#include "vendor_init.h"
 
 struct selabel_handle *sehandle;
 struct selabel_handle *sehandle_prop;
@@ -827,7 +826,7 @@ static void import_kernel_nv(char *name, int for_emulator)
         }
 #endif
 #ifdef STE_SAMSUNG_HARDWARE
-	} else if (!strcmp(name,BOARD_LPM_BOOT_ARGUMENT_NAME)) {
+} else if (!strcmp(name,BOARD_LPM_BOOT_ARGUMENT_NAME)) {
         if (!strcmp(value,BOARD_LPM_BOOT_ARGUMENT_VALUE)) {
             lpm_bootmode = 1;
         }
@@ -929,11 +928,6 @@ static int property_service_init_action(int nargs, char **args)
      * that /data/local.prop cannot interfere with them.
      */
     start_property_service();
-
-    /* update with vendor-specific property runtime
-     * overrides
-     */
-    vendor_load_properties();
     return 0;
 }
 
@@ -1009,7 +1003,6 @@ struct selabel_handle* selinux_android_prop_context_handle(void)
 void selinux_init_all_handles(void)
 {
     sehandle = selinux_android_file_context_handle();
-    selinux_android_set_sehandle(sehandle);
     sehandle_prop = selinux_android_prop_context_handle();
 }
 
@@ -1328,7 +1321,7 @@ int main(int argc, char **argv)
             continue;
 
         for (i = 0; i < fd_count; i++) {
-            if (ufds[i].revents & POLLIN) {
+            if (ufds[i].revents == POLLIN) {
                 if (ufds[i].fd == get_property_set_fd())
                     handle_property_set_fd();
                 else if (ufds[i].fd == get_keychord_fd())
