@@ -15,9 +15,9 @@ git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_native re
 git cherry-pick FETCH_HEAD
 cd ../..
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_base"$CL_RST
-cp patches/frameworks/base/core/jni/android_media_AudioRecord.cpp frameworks/base/core/jni/android_media_AudioRecord.cpp
+cp patch/patches/frameworks/base/core/jni/android_media_AudioRecord.cpp frameworks/base/core/jni/android_media_AudioRecord.cpp
 echo -e $CL_BLU"Cherrypicking Core Patch - OMX, reboot/shutdown fix and samsung: allow lpm from command line"$CL_RST
-cp patches/system/core/init/init.c system/core/init/init.c
+cp patch/patches/system/core/init/init.c system/core/init/init.c
 cd system/core
 git fetch https://github.com/shine911/android_system_core kk4.4
 git cherry-pick bef1a23e42c532b5f06fa54878434995478b1f54
@@ -40,6 +40,6 @@ cd ../../..
 echo -e $CL_BLU"Cherrypicking Low-incall Volume Fix"$CL_RST
 cd packages/services/Telephony
 git fetch https://github.com/shine911/packages_services_Telephony kk4.4
-git cherry-pick 6e18ab650a9bc6f4d16df7160569a6d45415e9ec
+git cherry-pick 94d43efa096783d3df4200fcc5ebec1044f6f03c
 cd ../../..
 echo -e $CL_BLU"DONE!"$CL_RST
