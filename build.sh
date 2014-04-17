@@ -16,14 +16,19 @@ CLEAN="$4"
 res1=$(date +%s.%N)
 
 # Sync with latest sources
-if [ "$SYNC" == "sync" ]
+if [ "$SYNC" == "1" ]
 then
-echo -e "${bldblu}Syncing latest sources ${txtrst}"
+echo -e "${bldblu}Reset all local commit${txtrst}"
+   repo forall -c "git reset --hard"
+   echo -e "${bldblu}Syncing latest sources ${txtrst}"
    repo sync -j"$THREADS"
+   echo -e "${bldblu}Starting Patching...${txtrst}"
+   ./patch.sh
+   echo -e "${bldblu}DONE!${txtrst}"
 fi
 
 # Clean out folder
-if [ "$CLEAN" == "clean" ]
+if [ "$CLEAN" == "1" ]
 then
 echo -e "${bldblu}Cleaning up out folder ${txtrst}"
    make clobber;

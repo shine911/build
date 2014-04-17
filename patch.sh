@@ -1,6 +1,3 @@
-echo -e $CL_BLU"RESET ALL COMMIT"$CL_RST
-repo forall -c "git reset --hard"
-echo -e $CL_BLU"Starting Patching..."$CL_RST
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_av"$CL_RST
 cd frameworks/av
 git fetch https://github.com/shine911/frameworks_av kk4.4
@@ -42,4 +39,3 @@ cd packages/services/Telephony
 git fetch https://github.com/shine911/packages_services_Telephony kk4.4
 git cherry-pick 94d43efa096783d3df4200fcc5ebec1044f6f03c
 cd ../../..
-echo -e $CL_BLU"DONE!"$CL_RST
