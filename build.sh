@@ -58,7 +58,7 @@ make -j"$THREADS" bacon
 
 # Upload to FTP
 cd $OUT
-. patch/upload.sh
+upload.sh
 
 # Get elapsed time
 res2=$(date +%s.%N)
