@@ -57,6 +57,7 @@ echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 make -j"$THREADS" bacon
 
 # Upload to FTP
+cd $OUT
 . patch/upload.sh
 
 # Get elapsed time
