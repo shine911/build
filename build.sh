@@ -61,7 +61,7 @@ echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 
 # Upload to FTP
 cd $OUT
-upload.sh
+./upload.sh
 
 # Get elapsed time
 res2=$(date +%s.%N)
