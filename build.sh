@@ -43,14 +43,10 @@ echo -e "${bldblu}Setting up build environment ${txtrst}"
 export USE_CCACHE=1
 export CCACHE_DIR="`pwd`/../.slimccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 20G
-cp patch/patches/vendor/pa/configs/bootanimation.mk vendor/pa/configs/bootanimation.mk
-cp patch/patches/vendor/pa/products/pa_codina.mk patch/patches/vendor/pa/products/pa_codina.mk
-cp patch/patches/vendor/pa/products/AndroidProducts.mk patch/patches/vendor/pa/products/AndroidProducts.mk
-
 
 # Lunch device
 echo -e "${bldblu}Lunching device... ${txtrst}"
-lunch "pa_$DEVICE-userdebug"
+lunch "slim_$DEVICE-userdebug"
 
 # Remove previous build info
 echo -e "${bldblu}Removing previous build.prop ${txtrst}"
@@ -58,7 +54,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-mka bacon
+make -j"$THREADS" bacon
 
 # Upload to FTP
 cd $OUT
