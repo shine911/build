@@ -58,7 +58,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-mka bacon
+./rom-build.sh codina
 
 # Upload to FTP
 cd $OUT
