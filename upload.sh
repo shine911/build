@@ -12,7 +12,7 @@ user $USER $PASS
 cd /download/rom
 
 # Call4.  Here you will tell FTP to put or get the file.
-put slim-$DEVICE_*
+put pa-$DEVICE_*
 
 # End FTP Connection
 bye
