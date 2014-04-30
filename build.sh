@@ -42,14 +42,15 @@ echo -e "${bldblu}Setting up build environment ${txtrst}"
 export USE_CCACHE=1
 export CCACHE_DIR="`pwd`/../.paccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 20G
-cp patch/patches/vendor/pa/configs/bootanimation.mk vendor/pa/configs/bootanimation.mk
-cp patch/patches/vendor/pa/products/pa_codina.mk vendor/pa/products/pa_codina.mk
-cp patch/patches/vendor/pa/products/AndroidProducts.mk vendor/pa/products/AndroidProducts.mk
-
+cp patch/patches/vendor/aokp/products/aokp_codina.mk vendor/aokp/products/aokp_codina.mk
+cp patch/patches/vendor/aokp/products/AndroidProducts.mk vendor/aokp/products/AndroidProducts.mk
+mkdir -p vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values
+cp patch/patches/vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/config.xml /vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/config.xml
+cp patch/patches/vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/arrays.xml /vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/arrays.xml
 
 # Lunch device
 echo -e "${bldblu}Lunching device... ${txtrst}"
-lunch "pa_$DEVICE-userdebug"
+lunch "aokp_$DEVICE-userdebug"
 
 # Remove previous build info
 echo -e "${bldblu}Removing previous build.prop ${txtrst}"
@@ -57,7 +58,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-./rom-build.sh codina
+time brunch "$DEVICE-userdebug"
 
 # Upload to FTP
 cd $OUT
