@@ -44,6 +44,7 @@ export CCACHE_DIR="`pwd`/../.aokpccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 20G
 cp patch/patches/vendor/aokp/products/aokp_codina.mk vendor/aokp/products/codina.mk
 cp patch/patches/vendor/aokp/products/AndroidProducts.mk vendor/aokp/products/AndroidProducts.mk
+cp patch/patches/vendor/aokp/vendorsetup.sh vendor/aokp/vendorsetup.sh
 mkdir -p vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values
 cp patch/patches/vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/config.xml vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/config.xml
 cp patch/patches/vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/arrays.xml vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/arrays.xml
@@ -58,7 +59,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-time brunch "$DEVICE-userdebug"
+breakfast "$DEVICE-userdebug"
 
 # Upload to FTP
 cd $OUT
