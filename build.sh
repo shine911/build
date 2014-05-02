@@ -59,7 +59,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-breakfast "$DEVICE-userdebug"
+breakfast "aokp_$DEVICE-userdebug"
 
 # Upload to FTP
 cd $OUT
