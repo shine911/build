@@ -29,11 +29,6 @@ cd hardware/libhardware_legacy
 git fetch https://github.com/TeamCanjica/android_hardware_libhardware_legacy cm-11.0
 git cherry-pick 9c2250d32a1eda9afe3b5cefe3306104148aa532
 cd ../..
-echo -e $CL_BLU"Cherrypicking Camera fix"$CL_RST
-cd packages/apps/Camera2
-git fetch https://github.com/CyanogenMod/android_packages_apps_Camera2 cm-11.0
-git cherry-pick 42067bbce2203088e09039169b0262691dd07e97
-cd ../../..
 echo -e $CL_BLU"Cherrypicking Low-incall Volume Fix"$CL_RST
 cd packages/services/Telephony
 git fetch https://github.com/shine911/packages_services_Telephony kk4.4
