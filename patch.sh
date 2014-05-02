@@ -36,6 +36,7 @@ git fetch https://github.com/shine911/packages_services_Telephony kk4.4
 git cherry-pick 94d43efa096783d3df4200fcc5ebec1044f6f03c
 cd ../../..
 echo -e $CL_BLU"ART fix"$CL_RST
+cd art
 git fetch https://github.com/TeamNova/mokee_art kk_mkt
 git cherry-pick 79308dc75917eb075454595435c21f1fc395f605
 cd ../
