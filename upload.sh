@@ -9,7 +9,7 @@ ftp -inv $HOST << EOF
 user $USER $PASS
 
 # Call 3. Here you will change to the directory where you want to put or get
-cd /download/rom/aospa
+cd /download/rom/aokp
 
 tick
 
