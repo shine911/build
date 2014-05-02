@@ -42,11 +42,11 @@ echo -e "${bldblu}Setting up build environment ${txtrst}"
 export USE_CCACHE=1
 export CCACHE_DIR="`pwd`/../.aokpccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 20G
-cp patch/patches/vendor/aokp/products/aokp_codina.mk vendor/aokp/products/aokp_codina.mk
+cp patch/patches/vendor/aokp/products/aokp_codina.mk vendor/aokp/products/codina.mk
 cp patch/patches/vendor/aokp/products/AndroidProducts.mk vendor/aokp/products/AndroidProducts.mk
 mkdir -p vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values
-cp patch/patches/vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/config.xml /vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/config.xml
-cp patch/patches/vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/arrays.xml /vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/arrays.xml
+cp patch/patches/vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/config.xml vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/config.xml
+cp patch/patches/vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/arrays.xml vendor/aokp/overlay/samsung/codina/packages/apps/ROMControl/res/values/arrays.xml
 
 # Lunch device
 echo -e "${bldblu}Lunching device... ${txtrst}"
