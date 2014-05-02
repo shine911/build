@@ -40,7 +40,7 @@ fi
 echo -e "${bldblu}Setting up build environment ${txtrst}"
 . build/envsetup.sh
 export USE_CCACHE=1
-export CCACHE_DIR="`pwd`/../.paccache"
+export CCACHE_DIR="`pwd`/../.aokpccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 20G
 cp patch/patches/vendor/aokp/products/aokp_codina.mk vendor/aokp/products/aokp_codina.mk
 cp patch/patches/vendor/aokp/products/AndroidProducts.mk vendor/aokp/products/AndroidProducts.mk
