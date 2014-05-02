@@ -9,7 +9,9 @@ ftp -inv $HOST << EOF
 user $USER $PASS
 
 # Call 3. Here you will change to the directory where you want to put or get
-cd /download/rom
+cd /download/rom/aospa
+
+tick
 
 # Call4.  Here you will tell FTP to put or get the file.
 put pa-$DEVICE_*

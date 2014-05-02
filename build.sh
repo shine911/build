@@ -62,7 +62,7 @@ time brunch "$DEVICE-userdebug"
 
 # Upload to FTP
 cd $OUT
-./upload.sh
+. patch/patches/upload.sh
 
 # Get elapsed time
 res2=$(date +%s.%N)
