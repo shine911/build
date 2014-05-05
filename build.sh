@@ -59,11 +59,11 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-breakfast "aokp_$DEVICE-userdebug"
+brunch "aokp_$DEVICE-userdebug"
 
 # Upload to FTP
-cd $OUT
-. patch/patches/upload.sh
+# cd $OUT
+#. patch/patches/upload.sh
 
 # Get elapsed time
 res2=$(date +%s.%N)
