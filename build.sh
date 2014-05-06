@@ -40,7 +40,7 @@ fi
 echo -e "${bldblu}Setting up build environment ${txtrst}"
 . build/envsetup.sh
 export USE_CCACHE=1
-export CCACHE_DIR="`pwd`/../.aokpccache"
+export CCACHE_DIR="`pwd`/../.ubuntuccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 20G
 
 # Lunch device
