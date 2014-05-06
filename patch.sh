@@ -18,19 +18,9 @@ cp patch/patches/system/core/init/init.c system/core/init/init.c
 cd system/core
 git fetch https://github.com/shine911/AOKP_system_core kitkat
 git cherry-pick 8a88ebcc6c34ac5ba16f1b16660b8594ae6f86a6
-cd ..
-echo -e $CL_BLU"Cherrypicking vold patch to allow switching storages"$CL_RST
-cd vold
-git fetch https://github.com/shine911/android_system_vold kk4.4
-git cherry-pick FETCH_HEAD
 cd ../..
 echo -e $CL_BLU"Cherrypicking vibrator fix"$CL_RST
 cd hardware/libhardware_legacy
 git fetch https://github.com/TeamCanjica/android_hardware_libhardware_legacy cm-11.0
 git cherry-pick 9c2250d32a1eda9afe3b5cefe3306104148aa532
 cd ../..
-echo -e $CL_BLU"Cherrypicking Low-incall Volume Fix"$CL_RST
-cd packages/services/Telephony
-git fetch https://github.com/shine911/packages_services_Telephony kk4.4
-git cherry-pick 94d43efa096783d3df4200fcc5ebec1044f6f03c
-cd ../../..
