@@ -53,7 +53,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-brunch $DEVICE
+make -j $THREADS $DEVICE
 
 # Upload to FTP
 # cd $OUT
