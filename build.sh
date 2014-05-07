@@ -44,8 +44,8 @@ export CCACHE_DIR="`pwd`/../.ubuntuccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 20G
 
 # Lunch device
-#echo -e "${bldblu}Lunching device... ${txtrst}"
-#lunch "$DEVICE"
+echo -e "${bldblu}Lunching device... ${txtrst}"
+lunch "cm_$DEVICE-userdebug"
 
 # Remove previous build info
 echo -e "${bldblu}Removing previous build.prop ${txtrst}"
@@ -53,7 +53,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-make -j $THREADS $DEVICE
+make -j $THREAD
 
 # Upload to FTP
 # cd $OUT
