@@ -1,4 +1,4 @@
-Some custom patches for building AOKP.
+Some custom patches for building AOSPA.
 =====
 Some patches for codina device.
 First run:
