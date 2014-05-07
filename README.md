@@ -1,4 +1,4 @@
-Some custom patches for building AOSPA.
+Some custom patches for building Ubuntu Touch.
 =====
 Some patches for codina device.
 First run:
