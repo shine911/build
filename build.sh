@@ -40,12 +40,21 @@ fi
 echo -e "${bldblu}Setting up build environment ${txtrst}"
 . build/envsetup.sh
 export USE_CCACHE=1
-export CCACHE_DIR="`pwd`/../.ubuntuccache"
+export CCACHE_DIR="`pwd`/../.aospaccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 20G
 
 # Lunch device
 echo -e "${bldblu}Lunching device... ${txtrst}"
-lunch "cm_$DEVICE-userdebug"
+lunch "pa_$DEVICE-userdebug"
+=======
+cp patch/patches/vendor/pa/configs/bootanimation.mk vendor/pa/configs/bootanimation.mk
+cp patch/patches/vendor/pa/products/pa_codina.mk vendor/pa/products/pa_codina.mk
+cp patch/patches/vendor/pa/products/AndroidProducts.mk vendor/pa/products/AndroidProducts.mk
+
+
+# Lunch device
+echo -e "${bldblu}Lunching device... ${txtrst}"
+lunch "pa_$DEVICE-userdebug"
 
 # Remove previous build info
 echo -e "${bldblu}Removing previous build.prop ${txtrst}"
@@ -53,9 +62,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-make -j $THREADS
-#Make OTA Packages
-brunch $DEVICE
+./rom-build.sh codina
 
 # Upload to FTP
 # cd $OUT
