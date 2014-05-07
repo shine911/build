@@ -54,6 +54,8 @@ rm $OUT/system/build.prop;
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 make -j $THREADS
+#Make OTA Packages
+brunch $DEVICE
 
 # Upload to FTP
 # cd $OUT
