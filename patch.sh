@@ -24,15 +24,6 @@ cd vold
 git fetch https://github.com/shine911/android_system_vold kk4.4
 git cherry-pick FETCH_HEAD
 cd ../..
-echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations"$CL_RST
-cd build
-git fetch https://github.com/JustArchi/android_build android-4.4
-git cherry-pick 8e1b82c082a8de9160e6c0fc3ded37b591c3e517
-cd ..
-cd frameworks/rs
-git fetch https://github.com/JustArchi/android_frameworks_rs android-4.4
-git cherry-pick 525af84628f8db47688de392b13c1c2fa73854bb
-cd ../..
 echo -e $CL_BLU"Cherrypicking vibrator fix"$CL_RST
 cd hardware/libhardware_legacy
 git fetch https://github.com/TeamCanjica/android_hardware_libhardware_legacy cm-11.0
