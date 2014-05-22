@@ -8,10 +8,14 @@ ftp -inv $HOST << EOF
 
 user $USER $PASS
 
-# Call 3. Here you will change to the directory where you want to put or get
-cd /download/rom
+# Call 3. Addon
+process
+tick
 
-# Call4.  Here you will tell FTP to put or get the file.
+# Call 4. Here you will change to the directory where you want to put or get
+cd /download/rom/slimkat
+
+# Call 5.  Here you will tell FTP to put or get the file.
 put slim-$DEVICE_*
 
 # End FTP Connection

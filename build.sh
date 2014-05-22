@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Colorize and add text parameters
 grn=$(tput setaf 2) # green
 txtbld=$(tput bold) # Bold
@@ -11,9 +13,25 @@ DEVICE="$1"
 SYNC="$2"
 THREADS="$3"
 CLEAN="$4"
+INPUT=
+USER=
+PASS=
+HOST=
 
 # Time of build startup
 res1=$(date +%s.%N)
+
+echo "Do you want use FTP upload [Y/n]:"
+read INPUT
+if ["$INPUT"=="y"] || ["$INPUT"=="Y"]
+then
+echo -e "${bldblu}FTP HOST [Type and ENTER]:${txtrst}"
+read HOST
+echo -e "${bldblu}FTP USER [Type and ENTER]:${txtrst}"
+read USER
+echo -e "${bldblu}FTP PASS [Type and ENTER]:${txtrst}"
+read PASS
+fi
 
 # Sync with latest sources
 if [ "$SYNC" == "1" ]
@@ -58,7 +76,10 @@ make -j"$THREADS" bacon
 
 # Upload to FTP
 cd $OUT
-upload.sh
+if ["$INPUT"=="y"] || ["$INPUT"=="Y"]
+then
+. patch/upload.sh
+fi
 
 # Get elapsed time
 res2=$(date +%s.%N)
