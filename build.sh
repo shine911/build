@@ -23,7 +23,14 @@ res1=$(date +%s.%N)
 
 echo "Do you want use FTP upload [Y/n]:"
 read INPUT
-if ["$INPUT"=="y"] || ["$INPUT"=="Y"]
+if ["$INPUT"=="y"]
+then
+INPUT=Y
+else
+INPUT=n
+fi
+
+if ["$INPUT"=="Y"]
 then
 echo -e "${bldblu}FTP HOST [Type and ENTER]:${txtrst}"
 read HOST
@@ -75,7 +82,7 @@ schedtool -B -n 1 -e ionice -n 1 make -j$(cat /proc/cpuinfo | grep "^processor" 
 
 # Upload to FTP
 cd $OUT
-if ["$INPUT"=="y"] || ["$INPUT"=="Y"]
+if [ "$INPUT" == "Y" ]
 then
 . patch/upload.sh
 fi
