@@ -11,8 +11,9 @@ txtrst=$(tput sgr0) # Reset
 
 DEVICE="$1"
 SYNC="$2"
-THREADS="$3"
-CLEAN="$4"
+JOB="$(cat /proc/cpuinfo | grep -c processor)"
+THREADS=-j"$JOB"
+CLEAN="$3"
 INPUT=
 USER=
 PASS=
