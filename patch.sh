@@ -24,7 +24,7 @@ cd vold
 git fetch https://github.com/shine911/android_system_vold kk4.4
 git cherry-pick FETCH_HEAD
 cd ../..
--echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations"$CL_RST
+echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations"$CL_RST
 cd build
 git fetch https://github.com/shine911/android_build kk4.4
 git cherry-pick 0862dd66d797eaa8d05684d15b6191d3da52fe60
