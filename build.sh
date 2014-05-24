@@ -55,12 +55,11 @@ echo -e "${bldblu}Skipping out folder cleanup ${txtrst}"
 fi
 
 # Setup environment
-rm -rf patches
 echo -e "${bldblu}Setting up build environment ${txtrst}"
 . build/envsetup.sh
 export USE_CCACHE=1
 export CCACHE_DIR="`pwd`/../.slimccache"
-prebuilts/misc/linux-x86/ccache/ccache -M 20G
+prebuilts/misc/linux-x86/ccache/ccache -M 50G
 
 # Lunch device
 echo -e "${bldblu}Lunching device... ${txtrst}"
@@ -72,7 +71,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-make -j"$THREADS" bacon
+schedtool -B -n 1 -e ionice -n 1 make -j$(cat /proc/cpuinfo | grep "^processor" | wc -l) "$@"
 
 # Upload to FTP
 cd $OUT

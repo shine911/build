@@ -16,7 +16,7 @@ tick
 cd /download/rom/slimkat
 
 # Call 5.  Here you will tell FTP to put or get the file.
-put slim-$DEVICE_*
+put $SLIM_MOD_VERSION.zip
 
 # End FTP Connection
 bye
