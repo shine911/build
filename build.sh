@@ -11,35 +11,12 @@ txtrst=$(tput sgr0) # Reset
 
 DEVICE="$1"
 SYNC="$2"
+CLEAN="$3"
 JOB="$(cat /proc/cpuinfo | grep -c processor)"
 THREADS=-j"$JOB"
-CLEAN="$3"
-INPUT=
-USER=
-PASS=
-HOST=
 
 # Time of build startup
 res1=$(date +%s.%N)
-
-echo "Do you want use FTP upload [Y/n]:"
-read INPUT
-if ["$INPUT"=="y"]
-then
-INPUT=Y
-else
-INPUT=n
-fi
-
-if ["$INPUT"=="Y"]
-then
-echo -e "${bldblu}FTP HOST [Type and ENTER]:${txtrst}"
-read HOST
-echo -e "${bldblu}FTP USER [Type and ENTER]:${txtrst}"
-read USER
-echo -e "${bldblu}FTP PASS [Type and ENTER]:${txtrst}"
-read PASS
-fi
 
 # Sync with latest sources
 if [ "$SYNC" == "1" ]
@@ -47,7 +24,7 @@ then
 echo -e "${bldblu}Reset all local commit${txtrst}"
    repo forall -c "git reset --hard"
    echo -e "${bldblu}Syncing latest sources ${txtrst}"
-   repo sync -j"$THREADS"
+   repo sync -f
    echo -e "${bldblu}Starting Patching...${txtrst}"
    ./patch.sh
    echo -e "${bldblu}DONE!${txtrst}"
@@ -80,13 +57,6 @@ rm $OUT/system/build.prop;
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 make $THREADS
-
-# Upload to FTP
-cd $OUT
-if [ "$INPUT" == "Y" ]
-then
-. patch/upload.sh
-fi
 
 # Get elapsed time
 res2=$(date +%s.%N)
