@@ -7,7 +7,6 @@ First run:
 
 Continue to building:
 
-		./build.sh <device> <REPO SYNC> <THREAD> <CLEAN>
+		./build.sh <device> <REPO SYNC> <CLEAN>
 
 <REPO SYNC> <CLEAN> : use 1 is enable or 0 is disable
-<THREAD>: job

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Colorize and add text parameters
 grn=$(tput setaf 2) # green
 txtbld=$(tput bold) # Bold
@@ -9,8 +11,9 @@ txtrst=$(tput sgr0) # Reset
 
 DEVICE="$1"
 SYNC="$2"
-THREADS="$3"
-CLEAN="$4"
+CLEAN="$3"
+JOB="$(cat /proc/cpuinfo | grep -c processor)"
+THREADS=-j"$JOB"
 
 # Time of build startup
 res1=$(date +%s.%N)
@@ -21,7 +24,7 @@ then
 echo -e "${bldblu}Reset all local commit${txtrst}"
    repo forall -c "git reset --hard"
    echo -e "${bldblu}Syncing latest sources ${txtrst}"
-   repo sync -j"$THREADS"
+   repo sync -f
    echo -e "${bldblu}Starting Patching...${txtrst}"
    ./patch.sh
    echo -e "${bldblu}DONE!${txtrst}"
@@ -41,8 +44,7 @@ echo -e "${bldblu}Setting up build environment ${txtrst}"
 . build/envsetup.sh
 export USE_CCACHE=1
 export CCACHE_DIR="`pwd`/../.paccache"
-prebuilts/misc/linux-x86/ccache/ccache -M 20G
-
+prebuilts/misc/linux-x86/ccache/ccache -M 50G
 
 # Lunch device
 echo -e "${bldblu}Lunching device... ${txtrst}"
@@ -55,10 +57,6 @@ rm $OUT/system/build.prop;
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 ./rom-build.sh codina
-
-# Upload to FTP
-cd $OUT
-. patch/patches/upload.sh
 
 # Get elapsed time
 res2=$(date +%s.%N)
