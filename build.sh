@@ -45,6 +45,9 @@ echo -e "${bldblu}Setting up build environment ${txtrst}"
 export USE_CCACHE=1
 export CCACHE_DIR="`pwd`/../.paccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 50G
+cp patch/patches/vendor/pa/configs/bootanimation.mk vendor/pa/configs/bootanimation.mk
+cp patch/patches/vendor/pa/products/pa_codina.mk vendor/pa/products/pa_codina.mk
+cp patch/patches/vendor/pa/products/AndroidProducts.mk vendor/pa/products/AndroidProducts.mk
 
 # Lunch device
 echo -e "${bldblu}Lunching device... ${txtrst}"
