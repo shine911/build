@@ -26,6 +26,11 @@ cd vold
 git fetch https://github.com/shine911/android_system_vold kk4.4
 git cherry-pick FETCH_HEAD
 cd ../..
+echo -e $CL_BLU"Cherrypicking fixes build"$CL_RST
+cd device/samsung/u8500-common
+git fetch https://github.com/shine911/android_device_samsung_u8500-common slimkat
+git cherry-pick cd75100ef6fe967608994932c56825030c4f77cf
+cd ../../../
 echo -e $CL_BLU"Cherrypicking vibrator fix"$CL_RST
 cd hardware/libhardware_legacy
 git fetch https://github.com/TeamCanjica/android_hardware_libhardware_legacy cm-11.0
