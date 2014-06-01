@@ -1,3 +1,8 @@
+echo -e $CL_BLU"Cherrypicking ART Patch"$CL_RST
+cd art
+git fetch https://github.com/JustArchi/android_art android-4.4
+git cherry-pick 8354d2dc9d260ca67dbdf32e123bd4da62b8a68d
+cd ../
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_av"$CL_RST
 cd frameworks/av
 git fetch https://github.com/shine911/frameworks_av kk4.4
@@ -27,7 +32,7 @@ cd ../..
 echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations"$CL_RST
 cd build
 git fetch https://github.com/shine911/android_build kk4.4
-git cherry-pick 0862dd66d797eaa8d05684d15b6191d3da52fe60
+git cherry-pick 88ecbd11815603fb35780b32d95479045088f85e
 cd ..
 cd frameworks/rs
 git fetch https://github.com/JustArchi/android_frameworks_rs android-4.4
