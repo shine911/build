@@ -28,12 +28,8 @@ echo -e $CL_BLU"Cherrypicking vold patch to allow switching storages"$CL_RST
 cd vold
 git fetch https://github.com/shine911/android_system_vold kk4.4
 git cherry-pick FETCH_HEAD
+echo -e $CL_BLU"Cherrypicking patch for JustArchi Optimized"$CL_RST
 cd ../..
-echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations"$CL_RST
-cd build
-git fetch https://github.com/shine911/android_build kk4.4
-git cherry-pick 88ecbd11815603fb35780b32d95479045088f85e
-cd ..
 cd frameworks/rs
 git fetch https://github.com/JustArchi/android_frameworks_rs android-4.4
 git cherry-pick 525af84628f8db47688de392b13c1c2fa73854bb
