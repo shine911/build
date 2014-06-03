@@ -6,12 +6,12 @@ cd ../
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_av"$CL_RST
 cd frameworks/av
 git fetch https://github.com/shine911/frameworks_av kk4.4
-git cherry-pick 97b2d13620053eaa8b3425d3bbb486b2c4ef5a9f
+git cherry-pick 7bcfe33b327ecb0f83cc42a2e72ba77a9cf8205d
 cd ..
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_native"$CL_RST
 cd native
 git fetch https://github.com/shine911/frameworks_native kk4.4
-git cherry-pick e7c8482bf9e3287c81962ad573d8562995a388bc
+git cherry-pick f8135f6b1d09a9a68f44558d9404692a4fee9f64
 echo -e $CL_BLU"Cherrypicking Legacy sensors"$CL_RST
 git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_native refs/changes/11/59311/1
 git cherry-pick FETCH_HEAD
@@ -22,7 +22,8 @@ echo -e $CL_BLU"Cherrypicking Core Patch - OMX, reboot/shutdown fix and samsung:
 cp patch/patches/system/core/init/init.c system/core/init/init.c
 cd system/core
 git fetch https://github.com/shine911/android_system_core kk4.4
-git cherry-pick bef1a23e42c532b5f06fa54878434995478b1f54
+git cherry-pick 2b0023e4f82d1204fd21da10bd94bb3b79179366
+git cherry-pick d200432d947cbe40b8aacf7b284d7d62d99c1fdb
 cd ..
 echo -e $CL_BLU"Cherrypicking vold patch to allow switching storages"$CL_RST
 cd vold
