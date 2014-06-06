@@ -35,6 +35,21 @@ cd hardware/libhardware_legacy
 git fetch https://github.com/TeamCanjica/android_hardware_libhardware_legacy cm-11.0
 git cherry-pick 9c2250d32a1eda9afe3b5cefe3306104148aa532
 cd ../..
+echo -e $CL_BLU"Cherrypicking clang optimisation suppression patches"$CL_RST
+cd external/clang
+git fetch https://github.com/zwliew/android_external_clang cm-11.0
+git cherry-pick bb0a1a5f007dc6e6f111c3a726977c4cce256bc5
+git cherry-pick 085466671e3c0483466de009bbc81fd31505f6e6
+cd ..
+echo -e $CL_BLU"Cherrypicking exfat compilation fix"$CL_RST
+cd fuse
+git fetch https://github.com/SlimSaber/android_external_fuse kk4.4
+git cherry-pick f3736cb1104f72ee1f1322a4eea79e960bee0cd6
+cd ..
+cd exfat
+git fetch https://github.com/SlimSaber/android_external_exfat kk4.4
+git cherry-pick 0cbb04e3fd9a254dbddf440355949383a9a00976
+cd ../..
 echo -e $CL_BLU"Cherrypicking Camera fix"$CL_RST
 cd packages/apps/Camera2
 git fetch https://github.com/CyanogenMod/android_packages_apps_Camera2 cm-11.0
