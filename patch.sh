@@ -41,6 +41,11 @@ git fetch https://github.com/zwliew/android_external_clang cm-11.0
 git cherry-pick bb0a1a5f007dc6e6f111c3a726977c4cce256bc5
 git cherry-pick 085466671e3c0483466de009bbc81fd31505f6e6
 cd ..
+echo -e $CL_BLU"Cherrypicking chromium_org don't make error build"$CL_RST
+cd chromium_org
+git fetch https://github.com/shine911/android_external_chromium_org cm-11.0
+git cherry-pick 1535e8ec2e1da1495b078a3e0b8c12e565a096d2
+cd ..
 echo -e $CL_BLU"Cherrypicking exfat compilation fix"$CL_RST
 cd fuse
 git fetch https://github.com/SlimSaber/android_external_fuse kk4.4
