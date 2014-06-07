@@ -44,7 +44,7 @@ cd ..
 echo -e $CL_BLU"Cherrypicking chromium_org don't make error build"$CL_RST
 cd chromium_org
 git fetch https://github.com/shine911/android_external_chromium_org cm-11.0
-git cherry-pick 1535e8ec2e1da1495b078a3e0b8c12e565a096d2
+git cherry-pick FETCH_HEAD
 cd ..
 echo -e $CL_BLU"Cherrypicking exfat compilation fix"$CL_RST
 cd fuse
