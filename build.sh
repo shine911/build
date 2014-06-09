@@ -35,7 +35,7 @@ fi
 if [ "$CLEAN" == "1" ]
 then
 echo -e "${bldblu}Cleaning up out folder ${txtrst}"
-   make clobber;
+   make clean;
 else
 echo -e "${bldblu}Skipping out folder cleanup ${txtrst}"
 fi
@@ -57,7 +57,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-make $THREADS
+make $THREADS bacon
 
 # Get elapsed time
 res2=$(date +%s.%N)
