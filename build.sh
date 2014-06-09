@@ -8,6 +8,7 @@ txtbld=$(tput bold) # Bold
 bldgrn=${txtbld}$(tput setaf 2) # green
 bldblu=${txtbld}$(tput setaf 4) # blue
 txtrst=$(tput sgr0) # Reset
+BASEDIR=$(pwd)
 
 DEVICE="$1"
 SYNC="$2"
@@ -21,8 +22,8 @@ res1=$(date +%s.%N)
 # Sync with latest sources
 if [ "$SYNC" == "1" ]
 then
-echo -e "${bldblu}Reset all local commit${txtrst}"
-   repo forall -c "git reset --hard"
+#echo -e "${bldblu}Reset all local commit${txtrst}"
+#   repo forall -c "git reset --hard"
    echo -e "${bldblu}Syncing latest sources ${txtrst}"
    repo sync -f
    echo -e "${bldblu}Starting Patching...${txtrst}"

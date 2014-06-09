@@ -1,0 +1,86 @@
+commit 80d19844e66fd4fd154b5728cad82a119db18bda
+Author: Qui Huynh <deathbook1999@gmail.com>
+Date:   Mon Jun 9 02:19:31 2014 -0400
+
+    Fix Ok Google and workaround api check
+    
+    Change-Id: Ic30f73a834261027f0707a477b321f5b8aba104c
+
+diff --git a/api/current.txt b/api/current.txt
+index d2db84a..3dab5fa 100644
+--- a/api/current.txt
++++ b/api/current.txt
+@@ -18771,6 +18771,23 @@ package android.preference {
+     method public void setShowDefault(boolean);
+     method public void setShowSilent(boolean);
+   }
++  
++  public class SlimSeekBarPreference extends android.preference.Preference implements android.widget.SeekBar.OnSeekBarChangeListener {
++    ctor public SlimSeekBarPreference(android.content.Context, android.util.AttributeSet);
++    method public void disablePercentageValue(boolean);
++    method public void disableText(boolean);
++    method public void isMilliseconds(boolean);
++    method public void minimumValue(int);
++    method public void multiplyValue(int);
++    method public void onProgressChanged(android.widget.SeekBar, int, boolean);
++    method public void onStartTrackingTouch(android.widget.SeekBar);
++    method public void onStopTrackingTouch(android.widget.SeekBar);
++    method public void setDefault(int);
++    method public void setInitValue(int);
++    method public void setInterval(int);
++    field public int interval;
++    field public static int maximum;
++  }
+ 
+   public class SwitchPreference extends android.preference.TwoStatePreference {
+     ctor public SwitchPreference(android.content.Context, android.util.AttributeSet, int);
+@@ -21257,6 +21274,7 @@ package android.provider {
+     field public static final java.lang.String FONT_SCALE = "font_scale";
+     field public static final java.lang.String HAPTIC_FEEDBACK_ENABLED = "haptic_feedback_enabled";
+     field public static final deprecated java.lang.String HTTP_PROXY = "http_proxy";
++	field public static final java.lang.String INCALL_GLOWPAD_TRANSPARENCY = "incall_glowpad_transparency";
+     field public static final deprecated java.lang.String INSTALL_NON_MARKET_APPS = "install_non_market_apps";
+     field public static final deprecated java.lang.String LOCATION_PROVIDERS_ALLOWED = "location_providers_allowed";
+     field public static final deprecated java.lang.String LOCK_PATTERN_ENABLED = "lock_pattern_autolock";
+@@ -32737,6 +32755,7 @@ package android.widget {
+     method public boolean isFlipping();
+     method public void setAutoStart(boolean);
+     method public void setFlipInterval(int);
++	method public void setSelfMaintained(boolean);
+     method public void startFlipping();
+     method public void stopFlipping();
+   }
+diff --git a/core/jni/android_media_AudioRecord.cpp b/core/jni/android_media_AudioRecord.cpp
+index 1c43cc5..13c617e 100644
+--- a/core/jni/android_media_AudioRecord.cpp
++++ b/core/jni/android_media_AudioRecord.cpp
+@@ -162,9 +162,19 @@ android_media_AudioRecord_setup(JNIEnv *env, jobject thiz, jobject weak_this,
+                 // Java channel masks map directly to the native definition
+         jint audioFormat, jint buffSizeInBytes, jintArray jSession)
+ {
+-    //ALOGV(">> Entering android_media_AudioRecord_setup");
+-    //ALOGV("sampleRate=%d, audioFormat=%d, channel mask=%x, buffSizeInBytes=%d",
+-    //     sampleRateInHertz, audioFormat, channelMask, buffSizeInBytes);
++	//ALOGI(">> Entering android_media_AudioRecord_setup");
++    //ALOGI("sampleRate=%d, audioFormat=%d, channel mask=%x, buffSizeInBytes=%d, source=%d",
++    // sampleRateInHertz, audioFormat, channelMask, buffSizeInBytes, source);
++#ifdef STE_HARDWARE
++ALOGI(">> Entering android_media_AudioRecord_setup");
++    ALOGI("sampleRate=%d, audioFormat=%d, channel mask=%x, buffSizeInBytes=%d, source=%d",
++         sampleRateInHertz, audioFormat, channelMask, buffSizeInBytes, source);
++    /* We don't have mic source 1999 so switch to regular mic source 1*/
++    if(source == 1999){
++source = 1;
++ALOGI("STE_HARDWARE source switched from 1999 to 1");
++}
++#endif
+ 
+     if (!audio_is_input_channel(channelMask)) {
+         ALOGE("Error creating AudioRecord: channel mask %#x is not valid.", channelMask);
+@@ -603,4 +613,4 @@ int register_android_media_AudioRecord(JNIEnv *env)
+             kClassPathName, gMethods, NELEM(gMethods));
+ }
+ 
+-// ----------------------------------------------------------------------------
++// ----------------------------------------------------------------------------
+\ No newline at end of file

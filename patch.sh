@@ -16,10 +16,11 @@ echo -e $CL_BLU"Cherrypicking Legacy sensors"$CL_RST
 git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_native refs/changes/11/59311/1
 git cherry-pick FETCH_HEAD
 cd ../..
-echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_base"$CL_RST
-cp patch/patches/frameworks/base/core/jni/android_media_AudioRecord.cpp frameworks/base/core/jni/android_media_AudioRecord.cpp
+echo -e $CL_BLU"Cherrypicking Ok google and workaround API check Patch - android_frameworks_base"$CL_RST
+cd base
+patch -p1 -N -i$BASEDIR/patch/patches/frameworks_base.patch
+cd ../..
 echo -e $CL_BLU"Cherrypicking Core Patch - OMX, reboot/shutdown fix and samsung: allow lpm from command line"$CL_RST
-cp patch/patches/system/core/init/init.c system/core/init/init.c
 cd system/core
 git fetch https://github.com/shine911/android_system_core kk4.4
 git cherry-pick 2b0023e4f82d1204fd21da10bd94bb3b79179366
