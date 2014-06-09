@@ -8,7 +8,6 @@ txtbld=$(tput bold) # Bold
 bldgrn=${txtbld}$(tput setaf 2) # green
 bldblu=${txtbld}$(tput setaf 4) # blue
 txtrst=$(tput sgr0) # Reset
-BASEDIR=$(pwd)
 
 DEVICE="$1"
 SYNC="$2"

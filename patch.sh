@@ -1,3 +1,4 @@
+BASEDIR=$(pwd)
 echo -e $CL_BLU"Cherrypicking ART Patch"$CL_RST
 cd art
 git fetch https://github.com/JustArchi/android_art android-4.4
@@ -15,7 +16,7 @@ git cherry-pick f8135f6b1d09a9a68f44558d9404692a4fee9f64
 echo -e $CL_BLU"Cherrypicking Legacy sensors"$CL_RST
 git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_native refs/changes/11/59311/1
 git cherry-pick FETCH_HEAD
-cd ../..
+cd ..
 echo -e $CL_BLU"Cherrypicking Ok google and workaround API check Patch - android_frameworks_base"$CL_RST
 cd base
 patch -p1 -N -i$BASEDIR/patch/patches/frameworks_base.patch
