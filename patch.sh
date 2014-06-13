@@ -1,3 +1,13 @@
+echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations V3"$CL_RST
+cd build
+git fetch https://github.com/TeamCanjica/android_build cm-11.0
+git cherry-pick dbe7e5b4fff354cd9a9ef2e6605fa7db7eef9727
+cd ..
+echo -e $CL_BLU"Cherrypicking ART compatibility fix with GCC 4.8"$CL_RST
+cd art
+git fetch https://github.com/JustArchi/android_art android-4.4
+git cherry-pick 8354d2dc9d260ca67dbdf32e123bd4da62b8a68d
+cd ..
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_av"$CL_RST
 cd frameworks/av
 git fetch https://github.com/shine911/AOSPA_frameworks_av kitkat
@@ -13,7 +23,7 @@ git cherry-pick FETCH_HEAD
 cd ../..
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_base"$CL_RST
 cp patch/patches/frameworks/base/core/jni/android_media_AudioRecord.cpp frameworks/base/core/jni/android_media_AudioRecord.cpp
-echo -e $CL_BLU"Cherrypicking Core Patch - OMX, reboot/shutdown fix and samsung: allow lpm from command line"$CL_RST
+echo -e $CL_BLU"Cherrypicking Core Patch - OMX, reboot/shutdown fix"$CL_RST
 cd system/core
 git fetch https://github.com/shine911/AOSPA_system_core kitkat
 git cherry-pick 482266312537d3fb96e762c99d49525508124c25
@@ -23,6 +33,21 @@ echo -e $CL_BLU"Cherrypicking vold patch to allow switching storages"$CL_RST
 cd vold
 git fetch https://github.com/shine911/android_system_vold kk4.4
 git cherry-pick FETCH_HEAD
+cd ../..
+echo -e $CL_BLU"Cherrypicking clang optimisation suppression patches"$CL_RST
+cd external/clang
+git fetch https://github.com/zwliew/android_external_clang cm-11.0
+git cherry-pick bb0a1a5f007dc6e6f111c3a726977c4cce256bc5
+git cherry-pick 085466671e3c0483466de009bbc81fd31505f6e6
+cd ..
+echo -e $CL_BLU"Cherrypicking exfat compilation fix"$CL_RST
+cd fuse
+git fetch https://github.com/SlimSaber/android_external_fuse kk4.4
+git cherry-pick f3736cb1104f72ee1f1322a4eea79e960bee0cd6
+cd ..
+cd exfat
+git fetch https://github.com/SlimSaber/android_external_exfat kk4.4
+git cherry-pick 0cbb04e3fd9a254dbddf440355949383a9a00976
 cd ../..
 echo -e $CL_BLU"Cherrypicking fixes build"$CL_RST
 cd device/samsung/u8500-common
