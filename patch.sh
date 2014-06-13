@@ -1,7 +1,7 @@
 echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations V3"$CL_RST
 cd build
-git fetch https://github.com/TeamCanjica/android_build cm-11.0
-git cherry-pick dbe7e5b4fff354cd9a9ef2e6605fa7db7eef9727
+git fetch https://github.com/shine911/aospa_build kitkat
+git cherry-pick 156503b55996ea595f6f5999f249bebae8a187fc
 cd ..
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_av"$CL_RST
 cd frameworks/av
