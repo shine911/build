@@ -3,11 +3,6 @@ cd build
 git fetch https://github.com/TeamCanjica/android_build cm-11.0
 git cherry-pick dbe7e5b4fff354cd9a9ef2e6605fa7db7eef9727
 cd ..
-echo -e $CL_BLU"Cherrypicking ART compatibility fix with GCC 4.8"$CL_RST
-cd art
-git fetch https://github.com/JustArchi/android_art android-4.4
-git cherry-pick 8354d2dc9d260ca67dbdf32e123bd4da62b8a68d
-cd ..
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_av"$CL_RST
 cd frameworks/av
 git fetch https://github.com/shine911/AOSPA_frameworks_av kitkat
