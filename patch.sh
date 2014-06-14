@@ -16,8 +16,11 @@ echo -e $CL_BLU"Cherrypicking Legacy sensors"$CL_RST
 git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_native refs/changes/11/59311/1
 git cherry-pick FETCH_HEAD
 cd ../..
-echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_base"$CL_RST
+echo -e $CL_BLU"Cherrypicking Ok Google Patch and patch to reduce SystemUI crashes and freezes - android_frameworks_base"$CL_RST
 cp patch/patches/frameworks/base/core/jni/android_media_AudioRecord.cpp frameworks/base/core/jni/android_media_AudioRecord.cpp
+git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_base refs/changes/34/63034/2
+git cherry-pick FETCH_HEAD
+cd ../..
 echo -e $CL_BLU"Cherrypicking Core Patch - OMX, reboot/shutdown fix"$CL_RST
 cd system/core
 git fetch https://github.com/shine911/AOSPA_system_core kitkat
