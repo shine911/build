@@ -19,7 +19,7 @@ git cherry-pick FETCH_HEAD
 cd ..
 echo -e $CL_BLU"Cherrypicking Ok google, workaround API check Patch and SystemUI Crash reduce patch - android_frameworks_base"$CL_RST
 cd base
-patch -p1 -N -i$BASEDIR/patch/patches/frameworks_base.patch
+git apply $BASEDIR/patch/patches/frameworks_base.patch
 git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_base refs/changes/34/63034/2
 git cherry-pick FETCH_HEAD
 cd ../..
