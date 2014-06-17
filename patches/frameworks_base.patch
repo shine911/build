@@ -14,7 +14,7 @@ index d2db84a..3dab5fa 100644
      method public void setShowDefault(boolean);
      method public void setShowSilent(boolean);
    }
-+  
++
 +  public class SlimSeekBarPreference extends android.preference.Preference implements android.widget.SeekBar.OnSeekBarChangeListener {
 +    ctor public SlimSeekBarPreference(android.content.Context, android.util.AttributeSet);
 +    method public void disablePercentageValue(boolean);
