@@ -1,0 +1,26 @@
+From abf149c0000b5a18fca4b1813f661f8b8599193c Mon Sep 17 00:00:00 2001
+From: Qui Huynh <deathbook1999@gmail.com>
+Date: Thu, 19 Jun 2014 23:01:09 +0700
+Subject: [PATCH] This maybe enable choose screen of for AOSPA
+
+---
+ overlay/frameworks/base/core/res/res/values/config.xml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/overlay/frameworks/base/core/res/res/values/config.xml b/overlay/frameworks/base/core/res/res/values/config.xml
+index 5ef145d..8752e50 100644
+--- a/overlay/frameworks/base/core/res/res/values/config.xml
++++ b/overlay/frameworks/base/core/res/res/values/config.xml
+@@ -166,6 +166,9 @@
+          For example, a device with Home, Back and Menu keys would set this
+          config to 7. -->
+     <integer name="config_deviceHardwareKeys">7</integer>
++
++    <!-- True will enable the electron beam screen-off animation. -->
++    <bool name="config_screenOffAnimation">true</bool>
+ 
+     <!-- Package name(s) containing location provider support.
+          These packages can contain services implementing location providers,
+-- 
+1.8.4.msysgit.0
+
