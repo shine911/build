@@ -1,3 +1,4 @@
+BASEDIR=$(pwd)
 echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations V3"$CL_RST
 cd build
 git fetch https://github.com/shine911/aospa_build kitkat
