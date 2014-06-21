@@ -2,16 +2,12 @@
 
 clear
 
-# Colorize and add text parameters
-grn=$(tput setaf 2) # green
-txtbld=$(tput bold) # Bold
-bldgrn=${txtbld}$(tput setaf 2) # green
-bldblu=${txtbld}$(tput setaf 4) # blue
-txtrst=$(tput sgr0) # Reset
-
-DEVICE="$1"
-SYNC="$2"
-CLEAN="$3"
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+OUTDIR="$BASEDIR/out"
+INITRAMFSDIR="$BASEDIR/usr/STE_initramfs.list"
+TOOLCHAIN="/home/quihuynh/kernel/prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/bin/arm-eabi-"
+SYNC="$1"
+CLEAN="$2"
 
 # Time of build startup
 res1=$(date +%s.%N)
@@ -31,24 +27,15 @@ else
 echo -e "${bldblu}Skipping out folder cleanup ${txtrst}"
 fi
 
-# Setup environment
-echo -e "${bldblu}Setting up build environment ${txtrst}"
-. build/envsetup.sh
-export USE_CCACHE=1
-export CCACHE_DIR="`pwd`/../.paccache"
-prebuilts/misc/linux-x86/ccache/ccache -M 50G
+echo -e "\n\n Configuring I8160 Kernel...\n\n"
+make cyanogenmod_GT-I8160_defconfig ARCH=arm CROSS_COMPILE=$TOOLCHAIN
+echo -e "\n\n Compiling I8160 Kernel and Modules... \n\n"
+make -j4 ARCH=arm CROSS_COMPILE=$TOOLCHAIN CONFIG_INITRAMFS_SOURCE=$INITRAMFSDIR
 
-# Lunch device
-echo -e "${bldblu}Lunching device... ${txtrst}"
-lunch "cm_$DEVICE-userdebug"
-
-# Remove previous build info
-echo -e "${bldblu}Removing previous build.prop ${txtrst}"
-rm $OUT/system/build.prop;
-
-# Start compilation
-echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-make bootimage
+echo -e "\n\n Finish kernel... \n\n"
+mkdir -p $OUTDIR/system/lib/modules/
+find . -name "*.ko" -exec cp {} ../$OUTDIR/system/lib/modules \;
+cp arch/arm/boot/zImage $OUTDIR/boot.img
 
 # Get elapsed time
 res2=$(date +%s.%N)
