@@ -26,7 +26,7 @@ fi
 if [ "$CLEAN" == "1" ]
 then
 echo -e "${bldblu}Cleaning up out folder ${txtrst}"
-   make clobber;
+   make clean;
 else
 echo -e "${bldblu}Skipping out folder cleanup ${txtrst}"
 fi
