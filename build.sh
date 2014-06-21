@@ -31,7 +31,7 @@ echo -e "${bldblu}Skipping out folder cleanup ${txtrst}"
 fi
 
 echo -e "\n\n Configuring I8160 Kernel...\n\n"
-make cyanogenmod_GT-I8160_defconfig ARCH=arm CROSS_COMPILE=$TOOLCHAIN
+make cyanogenmod_i8160_defconfig ARCH=arm CROSS_COMPILE=$TOOLCHAIN
 echo -e "\n\n Compiling I8160 Kernel and Modules... \n\n"
 make -j4 ARCH=arm CROSS_COMPILE=$TOOLCHAIN CONFIG_INITRAMFS_SOURCE=$INITRAMFSDIR
 
