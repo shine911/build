@@ -37,8 +37,8 @@ echo -e "\n\n Compiling I8160 Kernel and Modules... \n\n"
 make -j4 ARCH=arm CROSS_COMPILE=$TOOLCHAIN CONFIG_INITRAMFS_SOURCE=$INITRAMFSDIR
 
 echo -e "\n\n Finish kernel... \n\n"
-mkdir -p $OUTDIR/system/lib/modules/
-find . -name "*.ko" -exec cp {} ../$OUTDIR/system/lib/modules \;
+mkdir -p $OUTDIR/system/lib/modules
+find . -name "*.ko" -exec cp {} $OUTDIR/system/lib/modules \;
 cp arch/arm/boot/zImage $OUTDIR/boot.img
 
 # Get elapsed time
