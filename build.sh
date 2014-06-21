@@ -9,7 +9,8 @@ INITRAMFSDIR="$BASEDIR/usr/STE_initramfs.list"
 TOOLCHAIN="/home/quihuynh/kernel/prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/bin/arm-eabi-"
 SYNC="$1"
 CLEAN="$2"
-
+ARCH=arm
+CROSS_COMPILE=$TOOLCHAIN
 # Time of build startup
 res1=$(date +%s.%N)
 
