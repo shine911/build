@@ -27,6 +27,7 @@ if [ "$CLEAN" == "1" ]
 then
 echo -e "${bldblu}Cleaning up out folder ${txtrst}"
    make clean;
+   rm -rf $OUTDIR
 else
 echo -e "${bldblu}Skipping out folder cleanup ${txtrst}"
 fi
