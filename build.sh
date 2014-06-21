@@ -16,7 +16,9 @@ res1=$(date +%s.%N)
 # Sync with latest sources
 if [ "$SYNC" == "1" ]
 then
+cd ../
    repo sync -f
+cd kernel
 fi
 
 # Clean out folder
