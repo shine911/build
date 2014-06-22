@@ -56,6 +56,9 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
+cd vendor/cm
+./get-prebuilts
+cd ../..
 brunch $DEVICE
 
 # Get elapsed time
