@@ -26,7 +26,7 @@ then
    echo -e "${bldblu}Syncing latest sources ${txtrst}"
    repo sync -f
    echo -e "${bldblu}Starting Patching...${txtrst}"
-   ./patch.sh
+   #./patch.sh
    echo -e "${bldblu}DONE!${txtrst}"
 fi
 
