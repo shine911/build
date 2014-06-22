@@ -48,7 +48,7 @@ prebuilts/misc/linux-x86/ccache/ccache -M 50G
 
 # Lunch device
 echo -e "${bldblu}Lunching device... ${txtrst}"
-lunch "codina_$DEVICE-userdebug"
+lunch "cm_$DEVICE-userdebug"
 
 # Remove previous build info
 echo -e "${bldblu}Removing previous build.prop ${txtrst}"
