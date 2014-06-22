@@ -56,7 +56,7 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-make $THREADS bacon
+make $THREADS otapackage
 
 # Get elapsed time
 res2=$(date +%s.%N)
