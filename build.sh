@@ -59,7 +59,7 @@ echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 cd vendor/cm
 ./get-prebuilts
 cd ../..
-brunch $DEVICE
+mka bootzip -j4
 
 # Get elapsed time
 res2=$(date +%s.%N)
