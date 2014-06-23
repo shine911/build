@@ -1,4 +1,3 @@
-BASEDIR=$(pwd)
 echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations V3"$CL_RST
 cd build
 git fetch https://github.com/shine911/aospa_build kitkat
@@ -21,6 +20,8 @@ echo -e $CL_BLU"Cherrypicking Ok Google Patch and patch to reduce SystemUI crash
 cp patch/patches/frameworks/base/core/jni/android_media_AudioRecord.cpp frameworks/base/core/jni/android_media_AudioRecord.cpp
 cd frameworks/base
 git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_base refs/changes/34/63034/2
+git cherry-pick FETCH_HEAD
+git fetch https://gerrit.paranoidandroid.co/AOSPA/android_frameworks_base refs/changes/18/4218/8
 git cherry-pick FETCH_HEAD
 cd ../..
 echo -e $CL_BLU"Cherrypicking Core Patch - OMX, reboot/shutdown fix"$CL_RST
@@ -55,7 +56,6 @@ git fetch https://github.com/shine911/android_device_samsung_u8500-common slimka
 git cherry-pick cd75100ef6fe967608994932c56825030c4f77cf
 git cherry-pick 15e763609b9a8c2f06ccbae43892c2eca08e36cd
 git cherry-pick 5e479e358469cd96277f3d5cd2dfc055a074177d
-git apply --stat $BASEDIR/patch/patches/misc.patch
 cd ../../../
 echo -e $CL_BLU"Cherrypicking vibrator fix"$CL_RST
 cd hardware/libhardware_legacy
