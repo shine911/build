@@ -12,6 +12,7 @@ txtrst=$(tput sgr0) # Reset
 DEVICE="$1"
 SYNC="$2"
 CLEAN="$3"
+
 # Time of build startup
 res1=$(date +%s.%N)
 
@@ -26,7 +27,7 @@ echo -e "${bldblu}Reset frameworks base commit${txtrst}"
    repo sync -f
    echo -e "${bldblu}Starting Patching...${txtrst}"
    ./patch.sh
-   echo -e "${bldblu}DONE!${txtrst}"
+   echo -e "${bldblu}DONE!${txtrst}"	
 fi
 
 # Clean out folder
