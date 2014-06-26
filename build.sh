@@ -18,8 +18,10 @@ res1=$(date +%s.%N)
 # Sync with latest sources
 if [ "$SYNC" == "1" ]
 then
-echo -e "${bldblu}Reset all local commit${txtrst}"
-   repo forall -c "git reset --hard"
+echo -e "${bldblu}Reset frameworks base commit${txtrst}"
+   cd frameworks/base
+   git reset --hard
+   cd ../..
    echo -e "${bldblu}Syncing latest sources ${txtrst}"
    repo sync -f
    echo -e "${bldblu}Starting Patching...${txtrst}"
