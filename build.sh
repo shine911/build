@@ -12,7 +12,6 @@ txtrst=$(tput sgr0) # Reset
 DEVICE="$1"
 SYNC="$2"
 CLEAN="$3"
-
 # Time of build startup
 res1=$(date +%s.%N)
 
@@ -55,6 +54,10 @@ rm $OUT/system/build.prop;
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 ./rom-build.sh codina
+
+#Upload to drive
+echo -e "${bldblu}Uploading to Drive for $DEVICE ${txtrst}"
+./patch/upload.sh
 
 # Get elapsed time
 res2=$(date +%s.%N)
