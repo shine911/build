@@ -1,4 +1,3 @@
-BASEDIR=$(pwd)
 echo -e $CL_BLU"Cherrypicking ART Patch"$CL_RST
 cd art
 git fetch https://github.com/JustArchi/android_art android-4.4
