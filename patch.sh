@@ -18,7 +18,6 @@ git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_native re
 git cherry-pick FETCH_HEAD
 cd ../..
 echo -e $CL_BLU"Cherrypicking Ok Google Patch and patch to reduce SystemUI crashes and freezes - android_frameworks_base"$CL_RST
-cp patch/patches/frameworks/base/core/jni/android_media_AudioRecord.cpp frameworks/base/core/jni/android_media_AudioRecord.cpp
 cd frameworks/base
 git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_base refs/changes/34/63034/2
 git cherry-pick FETCH_HEAD
