@@ -58,9 +58,12 @@ rm $OUT/system/build.prop;
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 ./rom-build.sh codina
 
+echo -e "${bldblu}Removing some unneed file... ${txtrst}"
+rm -rf pa_codina-ota-eng.quihuynh.zip
+
 #Upload to devhost
 echo -e "${bldblu}Uploading to DH for $DEVICE ${txtrst}"
-time devhost -u $DH_USER -p $DH_PASSWORD upload out/target/product/$DEVICE/pa-*.zip -f 37263 -d "None" -pb 1
+devhost -u $DH_USER -p $DH_PASSWORD upload $OUT/pa-*.zip -f 37263 -d "None" -pb 1
 
 # Get elapsed time
 res2=$(date +%s.%N)
