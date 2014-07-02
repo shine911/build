@@ -25,6 +25,7 @@ git cherry-pick FETCH_HEAD
 git fetch https://gerrit.paranoidandroid.co/AOSPA/android_frameworks_base refs/changes/18/4218/8
 git cherry-pick FETCH_HEAD
 git apply --stat $BASEDIR/patch/patches/46a5390.patch
+git apply --stat $BASEDIR/patch/patches/OK-Google.patch
 cd ../..
 echo -e $CL_BLU"Cherrypicking Core Patch - OMX, reboot/shutdown fix"$CL_RST
 cd system/core

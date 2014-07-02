@@ -19,10 +19,10 @@ res1=$(date +%s.%N)
 # Sync with latest sources
 if [ "$SYNC" == "1" ]
 then
-echo -e "${bldblu}Reset frameworks base commit${txtrst}"
-   cd frameworks/base
-   git reset --hard
-   cd ../..
+#echo -e "${bldblu}Reset frameworks base commit${txtrst}"
+#   cd frameworks/base
+#   git reset --hard
+#   cd ../..
    echo -e "${bldblu}Syncing latest sources ${txtrst}"
    repo sync -f
    echo -e "${bldblu}Starting Patching...${txtrst}"
@@ -43,7 +43,7 @@ fi
 echo -e "${bldblu}Setting up build environment ${txtrst}"
 . build/envsetup.sh
 export USE_CCACHE=1
-export CCACHE_DIR="`pwd`/../.paccache"
+export CCACHE_DIR="`pwd`/../.kkccache"
 prebuilts/misc/linux-x86/ccache/ccache -M 50G
 
 # Lunch device
@@ -58,9 +58,9 @@ rm $OUT/system/build.prop;
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 ./rom-build.sh codina
 
-#Upload to drive
-echo -e "${bldblu}Uploading to Drive for $DEVICE ${txtrst}"
-./patch/upload.sh
+#Upload to devhost
+echo -e "${bldblu}Uploading to DH for $DEVICE ${txtrst}"
+time devhost -u $DH_USER -p $DH_PASSWORD upload out/target/product/$DEVICE/pa-*.zip -f 37263 -d "None" -pb 1
 
 # Get elapsed time
 res2=$(date +%s.%N)

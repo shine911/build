@@ -1,4 +1,0 @@
-FOLDER_ID= "0B_r0ptRVC8z8cGo4T1N4ajZVakk" #AOSPA folder
-DATE= $(date -u +%Y%m%d)
-FILENAME= "$OUT/pa_$DEVICE-$MAJOR.$MINOR-$MAINTENANCE-$DATE.zip"
-php uploader.php $FILENAME $FOLDER_ID
