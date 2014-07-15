@@ -56,14 +56,28 @@ rm $OUT/system/build.prop;
 
 # Start compilation
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
-./rom-build.sh codina
+./rom-build.sh $DEVICE
 
 echo -e "${bldblu}Removing some unneed file... ${txtrst}"
-rm -rf pa_codina-ota-eng.quihuynh.zip
+rm -rf $OUT/pa_$DEVICE-ota*.zip
 
 #Upload to devhost
+case $DEVICE in
+  "codina")
+    export FOLDER="26295"
+    ;;
+  "codinap")
+    export FOLDER="29956"
+    ;;
+  *)
+    echo -e "Device upload not supported."
+    echo -e "Upload skipped!"
+    export UPLOAD="false"
+    exit 0
+esac
+
 echo -e "${bldblu}Uploading to DH for $DEVICE ${txtrst}"
-devhost -u $DH_USER -p $DH_PASSWORD upload $OUT/pa-*.zip -f 37263 -d "None" -pb 1
+devhost -u $DH_USER -p $DH_PASSWORD upload out/target/product/$DEVICE/pa_$DEVICE-*.zip -f $FOLDER -d "None" -pb 1
 
 # Get elapsed time
 res2=$(date +%s.%N)
