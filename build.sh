@@ -77,8 +77,7 @@ case $DEVICE in
 esac
 
 echo -e "${bldblu}Uploading to DH for $DEVICE ${txtrst}"
-devhost -u $DH_USER -p $DH_PASSWORD upload out/target/product/$DEVICE/pa_$DEVICE-*.zip -f $FOLDER -d "None" -pb 1
-
+devhost upload -u $DH_USER -p $DH_PASSWORD out/target/product/$DEVICE/pa_$DEVICE-*.zip -f $FOLDER -d "None" -pb 1
 # Get elapsed time
 res2=$(date +%s.%N)
 echo "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds) ${txtrst}"
