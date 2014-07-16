@@ -64,10 +64,10 @@ rm -rf $OUT/pa_$DEVICE-ota*.zip
 #Upload to devhost
 case $DEVICE in
   "codina")
-    export FOLDER="26295"
+    export FOLDER="37263"
     ;;
   "codinap")
-    export FOLDER="29956"
+    export FOLDER="38117"
     ;;
   *)
     echo -e "Device upload not supported."
