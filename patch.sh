@@ -55,6 +55,7 @@ cd device/samsung/u8500-common
 	git cherry-pick cd75100ef6fe967608994932c56825030c4f77cf
 	git cherry-pick 15e763609b9a8c2f06ccbae43892c2eca08e36cd
 	git cherry-pick 5e479e358469cd96277f3d5cd2dfc055a074177d
+	git cherry-pick d0b983f7eeb20e18949d6bfde62b22504b3d3e5e
 cd ../../../
 echo -e $CL_BLU"Cherrypicking vibrator fix"$CL_RST
 cd hardware/libhardware_legacy
