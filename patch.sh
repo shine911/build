@@ -21,8 +21,6 @@ echo -e $CL_BLU"Cherrypicking Ok Google Patch and patch to reduce SystemUI crash
 cd frameworks/base
 	git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_base refs/changes/34/63034/2
 	git cherry-pick FETCH_HEAD
-	git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_base refs/changes/28/67828/2
-	git cherry-pick FETCH_HEAD
 	git apply --stat $BASEDIR/patch/patches/OK-Google.patch
 cd ../..
 echo -e $CL_BLU"Cherrypicking Core Patch - OMX, reboot/shutdown fix"$CL_RST
