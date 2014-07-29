@@ -72,12 +72,15 @@ case $DEVICE in
   *)
     echo -e "Device upload not supported."
     echo -e "Upload skipped!"
-    export UPLOAD="false"
+# Get elapsed time
+res2=$(date +%s.%N)
+echo "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds) ${txtrst}"
     exit 0
 esac
 
 echo -e "${bldblu}Uploading to DH for $DEVICE ${txtrst}"
 devhost upload -u $DH_USER -p $DH_PASSWORD out/target/product/$DEVICE/pa_$DEVICE-*.zip -f $FOLDER -d "None" -pb 1
+
 # Get elapsed time
 res2=$(date +%s.%N)
 echo "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds) ${txtrst}"
