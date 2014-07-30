@@ -56,19 +56,8 @@ cd device/samsung/u8500-common
 	git cherry-pick 5e479e358469cd96277f3d5cd2dfc055a074177d
 	git cherry-pick d0b983f7eeb20e18949d6bfde62b22504b3d3e5e
 cd ../../../
-echo -e $CL_BLU"Cherrypicking vibrator fix"$CL_RST
-cd hardware/libhardware_legacy
-	git fetch https://github.com/TeamCanjica/android_hardware_libhardware_legacy cm-11.0
-	git cherry-pick 9c2250d32a1eda9afe3b5cefe3306104148aa532
-cd ../..
 echo -e $CL_BLU"Cherrypicking Low-incall Volume Fix"$CL_RST
 cd packages/services/Telephony
 	git fetch https://github.com/shine911/packages_services_Telephony kk4.4
 	git cherry-pick 94d43efa096783d3df4200fcc5ebec1044f6f03c
-cd ../../..
-
-##Only can't build with it in this time, it server have liblz4-dev i will delete this patch##
-echo -e $CL_BLU"Revert LZ4 support"$CL_RST
-cd kernel/samsung/u8500
-	git revert 87cf9a506361d61111af4faed64cbb66875ea2b4
 cd ../../..
