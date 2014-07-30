@@ -66,3 +66,9 @@ cd packages/services/Telephony
 	git fetch https://github.com/shine911/packages_services_Telephony kk4.4
 	git cherry-pick 94d43efa096783d3df4200fcc5ebec1044f6f03c
 cd ../../..
+
+##Only can't build with it in this time, it server have liblz4-dev i will delete this patch##
+echo -e $CL_BLU"Revert LZ4 support"$CL_RST
+cd kernel/samsung/u8500
+	git revert 87cf9a506361d61111af4faed64cbb66875ea2b4
+cd ../../..
