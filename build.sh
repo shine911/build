@@ -30,15 +30,6 @@ then
    echo -e "${bldblu}DONE!${txtrst}"	
 fi
 
-# Clean out folder
-if [ "$CLEAN" == "1" ]
-then
-echo -e "${bldblu}Cleaning up out folder ${txtrst}"
-   make clobber;
-else
-echo -e "${bldblu}Skipping out folder cleanup ${txtrst}"
-fi
-
 # Setup environment
 echo -e "${bldblu}Setting up build environment ${txtrst}"
 . build/envsetup.sh
@@ -49,6 +40,15 @@ prebuilts/misc/linux-x86/ccache/ccache -M 50G
 # Lunch device
 echo -e "${bldblu}Lunching device... ${txtrst}"
 lunch "pa_$DEVICE-userdebug"
+
+# Clean out folder
+if [ "$CLEAN" == "1" ]
+then
+echo -e "${bldblu}Cleaning up out folder ${txtrst}"
+   make clobber;
+else
+echo -e "${bldblu}Skipping out folder cleanup ${txtrst}"
+fi
 
 # Remove previous build info
 echo -e "${bldblu}Removing previous build.prop ${txtrst}"
