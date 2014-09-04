@@ -52,7 +52,7 @@ cd ../..
 echo -e $CL_BLU"Cherrypicking from my device common tree"$CL_RST
 cd device/samsung/u8500-common
 	git fetch https://github.com/shine911/android_device_samsung_u8500-common slimkat
-	git cherry-pick cd75100ef6fe967608994932c56825030c4f77cf
+	git cherry-pick e262ecc39146eb8fbbba8dc9b4209ea65b416905
 	git cherry-pick 5e479e358469cd96277f3d5cd2dfc055a074177d
 	git cherry-pick d0b983f7eeb20e18949d6bfde62b22504b3d3e5e
 cd ../../../
