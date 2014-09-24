@@ -19,10 +19,6 @@ res1=$(date +%s.%N)
 # Sync with latest sources
 if [ "$SYNC" == "1" ]
 then
-#echo -e "${bldblu}Reset frameworks base commit${txtrst}"
-#   cd frameworks/base
-#   git reset --hard
-#   cd ../..
    echo -e "${bldblu}Syncing latest sources ${txtrst}"
    repo sync -f
    echo -e "${bldblu}Starting Patching...${txtrst}"
@@ -58,28 +54,29 @@ rm $OUT/system/build.prop;
 echo -e "${bldblu}Starting build for $DEVICE ${txtrst}"
 ./rom-build.sh $DEVICE
 
-echo -e "${bldblu}Removing some unneed file... ${txtrst}"
-rm -rf $OUT/pa_$DEVICE-ota*.zip
+
+#echo -e "${bldblu}Removing some unneed file... ${txtrst}"
+#rm -rf $OUT/pa_$DEVICE-ota*.zip
 
 #Upload to devhost
-case $DEVICE in
-  "codina")
-    export FOLDER="37263"
-    ;;
-  "codinap")
-    export FOLDER="38117"
-    ;;
-  *)
-    echo -e "Device upload not supported."
-    echo -e "Upload skipped!"
+#case $DEVICE in
+#  "codina")
+#    export FOLDER="37263"
+#    ;;
+#  "codinap")
+#    export FOLDER="38117"
+#    ;;
+#  *)
+#    echo -e "Device upload not supported."
+#    echo -e "Upload skipped!"
 # Get elapsed time
 res2=$(date +%s.%N)
 echo "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds) ${txtrst}"
     exit 0
 esac
 
-echo -e "${bldblu}Uploading to DH for $DEVICE ${txtrst}"
-devhost upload -u $DH_USER -p $DH_PASSWORD out/target/product/$DEVICE/pa_$DEVICE-*.zip -f $FOLDER -d "None" -pb 1
+#echo -e "${bldblu}Uploading to DH for $DEVICE ${txtrst}"
+#devhost upload -u $DH_USER -p $DH_PASSWORD out/target/product/$DEVICE/pa_$DEVICE-*.zip -f $FOLDER -d "None" -pb 1
 
 # Get elapsed time
 res2=$(date +%s.%N)

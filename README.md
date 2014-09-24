@@ -1,11 +1,6 @@
-Some custom patches for building AOSPA.
+Buildbot for building AOSPA.
 =====
-Some patches for codina device.
-First run:
-
-		./patches.sh
-
-Continue to building:
+To building:
 
 		./build.sh <device> <REPO SYNC> <CLEAN>
 

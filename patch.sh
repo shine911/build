@@ -1,9 +1,4 @@
 BASEDIR=$(pwd)
-echo -e $CL_BLU"Cherrypicking JustArchi's ArchiDroid Optimizations V3"$CL_RST
-cd build
-	git fetch https://github.com/shine911/aospa_build kitkat
-	git cherry-pick 156503b55996ea595f6f5999f249bebae8a187fc
-cd ..
 echo -e $CL_BLU"Cherrypicking OMX Patch - android_frameworks_av"$CL_RST
 cd frameworks/av
 	git fetch https://github.com/shine911/AOSPA_frameworks_av kitkat
@@ -33,21 +28,6 @@ echo -e $CL_BLU"Cherrypicking vold patch to allow switching storages"$CL_RST
 cd vold
 	git fetch https://github.com/shine911/android_system_vold kk4.4
 	git cherry-pick FETCH_HEAD
-cd ../..
-echo -e $CL_BLU"Cherrypicking clang optimisation suppression patches"$CL_RST
-cd external/clang
-	git fetch https://github.com/zwliew/android_external_clang cm-11.0
-	git cherry-pick bb0a1a5f007dc6e6f111c3a726977c4cce256bc5
-	git cherry-pick 085466671e3c0483466de009bbc81fd31505f6e6
-cd ..
-echo -e $CL_BLU"Cherrypicking exfat compilation fix"$CL_RST
-cd fuse
-	git fetch https://github.com/SlimSaber/android_external_fuse kk4.4
-	git cherry-pick f3736cb1104f72ee1f1322a4eea79e960bee0cd6
-cd ..
-cd exfat
-	git fetch https://github.com/SlimSaber/android_external_exfat kk4.4
-	git cherry-pick 0cbb04e3fd9a254dbddf440355949383a9a00976
 cd ../..
 echo -e $CL_BLU"Cherrypicking from my device common tree"$CL_RST
 cd device/samsung/u8500-common
